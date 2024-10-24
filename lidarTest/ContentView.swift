@@ -1,24 +1,17 @@
-//
-//  ContentView.swift
-//  lidarTest
-//
-//  Created by Zheer Barzan on 24/10/24.
-//
-
 import SwiftUI
+import ARKit
+import RealityKit
 
 struct ContentView: View {
+    var arView = ARView(frame: .zero)
+
     var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundStyle(.tint)
-            Text("Hello, world!")
-        }
-        .padding()
+        ARViewContainer(arView: arView)
+            .edgesIgnoringSafeArea(.all)
+            .onAppear {
+                ARSessionManager.setupARSession(arView: arView)
+            }
     }
 }
 
-#Preview {
-    ContentView()
-}
+
